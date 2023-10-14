@@ -1,6 +1,12 @@
+const cds = require("@sap/cds");
 const { executeHttpRequest } = require("@sap-cloud-sdk/http-client");
 
 module.exports = async (srv) => {
+  const { BusinessPartners } = srv.entities;
+
+  // connect to remote service
+  const S4HANAService = await cds.connect.to("API_BUSINESS_PARTNER");
+
   srv.on("getNorthwindProducts", async (req) => {
     try {
       let response = await executeHttpRequest(
@@ -41,5 +47,22 @@ module.exports = async (srv) => {
     } catch (error) {
       console.log(error);
     }
+  });
+
+  srv.on("READ", BusinessPartners, async (req) => {
+
+    // Using CAP CDS Query Language - Recommended approach
+    return await S4HANAService.send({
+      query: SELECT(BusinessPartners)
+        .where({
+          FirstName: { "<>": "" },
+          LastName: { "<>": "" },
+        })
+        .columns(["BusinessPartner", "FirstName", "LastName"])
+        .limit(10),
+      headers: {
+        apikey: process.env.apikey,
+      },
+    });
   });
 };
