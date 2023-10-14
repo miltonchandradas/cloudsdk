@@ -21,3 +21,7 @@ Content-Type: application/json;IEEE754Compatible=true
 ### GET Business Partners
 GET http://localhost:4004/service/sdk/BusinessPartners
 
+
+### BATCH Operations (Read, Read, Create)
+GET http://localhost:4004/service/sdk/batchOperationsBP()
+
