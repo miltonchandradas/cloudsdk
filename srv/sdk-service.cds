@@ -1,6 +1,6 @@
 @path: 'service/sdk'
 service SDKService {
-    type Products {
+    type Product {
         ID          : Integer;
         Name        : String;
         Description : String;
@@ -8,5 +8,5 @@ service SDKService {
         Price       : Double;
     }
 
-    function getNorthwindProducts() returns array of Products;
+    function getNorthwindProducts() returns array of Product;
 }

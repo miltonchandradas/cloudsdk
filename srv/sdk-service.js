@@ -5,8 +5,8 @@ module.exports = async (srv) => {
     try {
       let response = await executeHttpRequest(
         {
-          // url: "https://services.odata.org/V2/OData/OData.svc",
-          destinationName: "northwind",
+          url: "https://services.odata.org/V2/(S(wd5zwkiarvfvgybus0l5a3xe))/OData/OData.svc",
+          // destinationName: "northwind",
         },
         {
           method: "get",
