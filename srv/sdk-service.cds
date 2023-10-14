@@ -5,7 +5,7 @@ service SDKService {
         Name        : String;
         Description : String;
         Rating      : Integer;
-        Price       : Double;
+        Price       : Decimal;
     }
 
     function getNorthwindProducts() returns array of Product;
