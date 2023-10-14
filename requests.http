@@ -6,7 +6,7 @@ GET http://localhost:4004/service/sdk/$metadata
 GET http://localhost:4004/service/sdk/getNorthwindProducts()
 
 
-### GET Northwind Products
+### POST Northwind Products
 POST http://localhost:4004/service/sdk/addNorthwindProduct
 Content-Type: application/json;IEEE754Compatible=true
 
@@ -17,3 +17,7 @@ Content-Type: application/json;IEEE754Compatible=true
     "Rating": 5,
     "Price": "99.99"
 }
+
+### GET Business Partners
+GET http://localhost:4004/service/sdk/BusinessPartners
+
