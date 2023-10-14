@@ -1,0 +1,6 @@
+RUN IN HYBRID MODE:
+----------------------------------------------------------------------------------------
+
+cf login
+cds bind -2 mydestination
+cds watch --profile hybrid
