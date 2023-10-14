@@ -7,10 +7,13 @@
   "private": true,
   "dependencies": {
     "@sap-cloud-sdk/http-client": "^3.6.0",
+    "@sap-cloud-sdk/openapi": "^3.6.0",
+    "@sap-cloud-sdk/openapi-generator": "^3.6.0",
     "@sap/cds": "^6",
     "express": "^4"
   },
   "devDependencies": {
+    "@sap-cloud-sdk/generator": "^3.6.0",
     "sqlite3": "^5"
   },
   "scripts": {

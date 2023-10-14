@@ -4,3 +4,9 @@ RUN IN HYBRID MODE:
 cf login
 cds bind -2 mydestination
 cds watch --profile hybrid
+
+
+
+GENERATE ODATA CLIENT:
+----------------------------------------------------------------------------------------
+npx generate-odata-client --skipValidation --input srv/external/API_BUSINESS_PARTNER.edmx --outputDir srv/external/API_BUSINESS_PARTNER_API --optionsPerService srv/external/serviceOptions.json --overwrite true --clearOutputDir true -t

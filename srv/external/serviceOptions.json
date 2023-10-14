@@ -1,0 +1,7 @@
+{
+  "srv/external/API_BUSINESS_PARTNER.edmx": {
+    "packageName": "api_business_partner",
+    "directoryName": "API_BUSINESS_PARTNER",
+    "basePath": "/sap/opu/odata/sap/API_BUSINESS_PARTNER"
+  }
+}
