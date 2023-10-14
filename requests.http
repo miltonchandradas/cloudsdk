@@ -4,3 +4,16 @@ GET http://localhost:4004/service/sdk/$metadata
 
 ### GET Northwind Products
 GET http://localhost:4004/service/sdk/getNorthwindProducts()
+
+
+### GET Northwind Products
+POST http://localhost:4004/service/sdk/addNorthwindProduct
+Content-Type: application/json;IEEE754Compatible=true
+
+{
+    "ID": 101,
+    "Name": "My Awesome Product",
+    "Description": "Description of My Awesome Product",
+    "Rating": 5,
+    "Price": "99.99"
+}
