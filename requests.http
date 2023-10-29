@@ -25,3 +25,8 @@ GET http://localhost:4004/service/sdk/BusinessPartners
 ### BATCH Operations (Read, Read, Create)
 GET http://localhost:4004/service/sdk/batchOperationsBP()
 
+
+
+### Send email
+GET http://localhost:4004/service/sdk/sendMail()
+

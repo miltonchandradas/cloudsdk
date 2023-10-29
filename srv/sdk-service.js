@@ -7,6 +7,7 @@ const {
   batch,
   changeset,
 } = require("./external/API_BUSINESS_PARTNER_API/API_BUSINESS_PARTNER/BatchRequest.js");
+const { sendMail } = require("@sap-cloud-sdk/mail-client");
 
 module.exports = async (srv) => {
   const { BusinessPartners } = srv.entities;
@@ -134,7 +135,7 @@ module.exports = async (srv) => {
       houseNumber: "3410",
       postalCode: "94304",
       streetName: "Hillview Avenue",
-      country: "US"
+      country: "US",
     });
     let create1 = businessPartnerAddressApi.requestBuilder().create(address1);
 
@@ -153,5 +154,31 @@ module.exports = async (srv) => {
       console.log(error.cause.cause.response.data.message);
       return "Batch request failed...";
     }
+  });
+
+  srv.on("sendMail", async (req) => {
+    const mailConfig = {
+      from: "milton.chandradas@gmail.com",
+      to: "milton.chandradas@gmail.com",
+      text: "Message body...",
+      subject: "Message subject...",
+    };
+
+    try {
+      sendMail({ destinationName: "google_smtp" }, [mailConfig], {
+        connectionTimeout: 120000,
+        greetingTimeout: 120000,
+        secure: false,
+        ignoreTLS: true,
+        debug: true,
+        tls: {
+          rejectUnauthorized: false,
+        },
+      });
+    } catch (error) {
+      console.log("ERROR: ", error);
+    }
+
+    return "OK";
   });
 };

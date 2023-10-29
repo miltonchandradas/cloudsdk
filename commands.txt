@@ -1,7 +1,8 @@
 RUN IN HYBRID MODE:
 ----------------------------------------------------------------------------------------
 
-cf login
+cf login -a https://api.cf.us10-001.hana.ondemand.com
+
 cds bind -2 mydestination
 cds watch --profile hybrid
 

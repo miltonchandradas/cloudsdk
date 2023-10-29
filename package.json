@@ -7,6 +7,7 @@
   "private": true,
   "dependencies": {
     "@sap-cloud-sdk/http-client": "^3.6.0",
+    "@sap-cloud-sdk/mail-client": "^3.7.0",
     "@sap-cloud-sdk/openapi": "^3.6.0",
     "@sap-cloud-sdk/openapi-generator": "^3.6.0",
     "@sap/cds": "^6",
