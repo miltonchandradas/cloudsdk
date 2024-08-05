@@ -30,3 +30,7 @@ GET http://localhost:4004/service/sdk/batchOperationsBP()
 ### Send email
 GET http://localhost:4004/service/sdk/sendMail()
 
+
+### Send email
+GET http://localhost:4004/v2/service/sdk/sendMail
+

@@ -6,6 +6,7 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
+    "@cap-js-community/odata-v2-adapter": "^1.13.1",
     "@sap-cloud-sdk/http-client": "^3.6.0",
     "@sap-cloud-sdk/mail-client": "^3.7.0",
     "@sap-cloud-sdk/openapi": "^3.6.0",
@@ -21,6 +22,10 @@
     "start": "cds-serve"
   },
   "cds": {
+    "cov2ap": {
+      "plugin": true,
+      "path": "v2"
+    },
     "requires": {
       "API_BUSINESS_PARTNER": {
         "kind": "odata-v2",
