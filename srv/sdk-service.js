@@ -156,32 +156,6 @@ module.exports = async (srv) => {
     }
   });
 
-  srv.on("sendMail", async (req) => {
-    const mailConfig = {
-      from: "matt.jacobs33@ethereal.email",
-      to: "milton.chandradas@gmail.com",
-      text: "Message body...",
-      subject: "Message subject...",
-    };
-
-    try {
-      sendMail({ destinationName: "google_smtp" }, [mailConfig], {
-        connectionTimeout: 120000,
-        greetingTimeout: 120000,
-        secure: false,
-        ignoreTLS: true,
-        debug: true,
-        tls: {
-          rejectUnauthorized: false,
-        },
-      });
-    } catch (error) {
-      console.log("ERROR: ", error);
-    }
-
-    return "OK";
-  });
-
   // srv.on("sendMail", async (req) => {
   //   const mailConfig = {
   //     from: "matt.jacobs33@ethereal.email",
@@ -191,16 +165,43 @@ module.exports = async (srv) => {
   //   };
 
   //   try {
-  //     await sendMail({ destinationName: "google_smtp" }, [mailConfig], {
-  //       greetingTimeout: 30000
+  //     sendMail({ destinationName: "google_smtp" }, [mailConfig], {
+  //       connectionTimeout: 120000,
+  //       greetingTimeout: 120000,
+  //       secure: false,
+  //       ignoreTLS: true,
+  //       debug: true,
+  //       tls: {
+  //         rejectUnauthorized: false,
+  //       },
   //     });
-  //     console.log("After await...")
   //   } catch (error) {
   //     console.log("ERROR: ", error);
-  //     return "NOT OK";
   //   }
 
   //   return "OK";
-    
   // });
+
+  srv.on("sendMail", async (req) => {
+    const mailConfig = {
+      from: "matt.jacobs33@ethereal.email",
+      to: "milton.chandradas@gmail.com",
+      text: "Message body...",
+      subject: "Message subject...",
+    };
+
+    try {
+      await sendMail({ destinationName: "google_smtp" }, [mailConfig], {
+        greetingTimeout: 30000
+      });
+      console.log("After await...")
+    } catch (error) {
+      console.log("ERROR: ", error);
+      // Do whatever here...
+      return "NOT OK";
+    }
+
+    return "OK";
+    
+  });
 };

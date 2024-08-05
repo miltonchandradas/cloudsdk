@@ -1,6 +1,10 @@
 RUN IN HYBRID MODE:
 ----------------------------------------------------------------------------------------
 
+
+cf create-service destination lite mydestination
+cf create-service-key mydestination mydestination-key
+
 cf login -a https://api.cf.us10-001.hana.ondemand.com
 
 cf login -a https://api.cf.eu10-004.hana.ondemand.com
