@@ -158,7 +158,7 @@ module.exports = async (srv) => {
 
   srv.on("sendMail", async (req) => {
     const mailConfig = {
-      from: "milton.chandradas@gmail.com",
+      from: "matt.jacobs33@ethereal.email",
       to: "milton.chandradas@gmail.com",
       text: "Message body...",
       subject: "Message subject...",
@@ -181,4 +181,26 @@ module.exports = async (srv) => {
 
     return "OK";
   });
+
+  // srv.on("sendMail", async (req) => {
+  //   const mailConfig = {
+  //     from: "matt.jacobs33@ethereal.email",
+  //     to: "milton.chandradas@gmail.com",
+  //     text: "Message body...",
+  //     subject: "Message subject...",
+  //   };
+
+  //   try {
+  //     await sendMail({ destinationName: "google_smtp" }, [mailConfig], {
+  //       greetingTimeout: 30000
+  //     });
+  //     console.log("After await...")
+  //   } catch (error) {
+  //     console.log("ERROR: ", error);
+  //     return "NOT OK";
+  //   }
+
+  //   return "OK";
+    
+  // });
 };
