@@ -1,0 +1,163 @@
+{
+ "meta": {
+  "creator": "cds-dk 7.9.4"
+ },
+ "$version": "2.0",
+ "definitions": {
+  "Northwind": {
+   "kind": "service",
+   "@cds.external": true,
+   "@m.IsDefaultEntityContainer": "true"
+  },
+  "Northwind.Products": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "ID": {
+     "key": true,
+     "type": "cds.Integer",
+     "notNull": true
+    },
+    "Name": {
+     "type": "cds.LargeString",
+     "@m.FC_TargetPath": "SyndicationTitle",
+     "@m.FC_ContentKind": "text",
+     "@m.FC_KeepInContent": "false"
+    },
+    "Description": {
+     "type": "cds.LargeString",
+     "@m.FC_TargetPath": "SyndicationSummary",
+     "@m.FC_ContentKind": "text",
+     "@m.FC_KeepInContent": "false"
+    },
+    "ReleaseDate": {
+     "type": "cds.DateTime",
+     "@odata.Type": "Edm.DateTime",
+     "notNull": true
+    },
+    "DiscontinuedDate": {
+     "type": "cds.DateTime",
+     "@odata.Type": "Edm.DateTime"
+    },
+    "Rating": {
+     "type": "cds.Integer",
+     "notNull": true
+    },
+    "Price": {
+     "type": "cds.Decimal",
+     "notNull": true
+    },
+    "Category": {
+     "@cds.ambiguous": "missing on condition?",
+     "type": "cds.Association",
+     "target": "Northwind.Categories",
+     "keys": []
+    },
+    "Supplier": {
+     "@cds.ambiguous": "missing on condition?",
+     "type": "cds.Association",
+     "target": "Northwind.Suppliers",
+     "keys": []
+    }
+   }
+  },
+  "Northwind.Categories": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "ID": {
+     "key": true,
+     "type": "cds.Integer",
+     "notNull": true
+    },
+    "Name": {
+     "type": "cds.LargeString",
+     "@m.FC_TargetPath": "SyndicationTitle",
+     "@m.FC_ContentKind": "text",
+     "@m.FC_KeepInContent": "true"
+    },
+    "Products": {
+     "@cds.ambiguous": "missing on condition?",
+     "type": "cds.Association",
+     "target": "Northwind.Products",
+     "cardinality": {
+      "max": "*"
+     },
+     "keys": []
+    }
+   }
+  },
+  "Northwind.Suppliers": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "ID": {
+     "key": true,
+     "type": "cds.Integer",
+     "notNull": true
+    },
+    "Name": {
+     "type": "cds.LargeString",
+     "@m.FC_TargetPath": "SyndicationTitle",
+     "@m.FC_ContentKind": "text",
+     "@m.FC_KeepInContent": "true"
+    },
+    "Address": {
+     "type": "Northwind.Address",
+     "notNull": true
+    },
+    "Concurrency": {
+     "type": "cds.Integer",
+     "notNull": true
+    },
+    "Products": {
+     "@cds.ambiguous": "missing on condition?",
+     "type": "cds.Association",
+     "target": "Northwind.Products",
+     "cardinality": {
+      "max": "*"
+     },
+     "keys": []
+    }
+   }
+  },
+  "Northwind.Address": {
+   "kind": "type",
+   "@cds.external": true,
+   "elements": {
+    "Street": {
+     "type": "cds.LargeString"
+    },
+    "City": {
+     "type": "cds.LargeString"
+    },
+    "State": {
+     "type": "cds.LargeString"
+    },
+    "ZipCode": {
+     "type": "cds.LargeString"
+    },
+    "Country": {
+     "type": "cds.LargeString"
+    }
+   }
+  },
+  "Northwind.GetProductsByRating": {
+   "kind": "function",
+   "@cds.external": true,
+   "params": {
+    "rating": {
+     "type": "cds.Integer"
+    }
+   },
+   "returns": {
+    "items": {
+     "type": "Northwind.Products"
+    }
+   }
+  }
+ }
+}

@@ -8,3 +8,12 @@ entity BusinessPartners as projection on external.A_BusinessPartner {
     LastName,
     FirstName
 }
+
+// using an external service from S/4HANA Cloud
+using {  Northwind } from '../srv/external/Northwind.csn';
+
+entity Products as projection on Northwind.Products {
+    key ID,
+    Name,
+    Description
+}

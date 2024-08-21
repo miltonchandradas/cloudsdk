@@ -14,6 +14,7 @@ module.exports = async (srv) => {
 
   // connect to remote service
   const S4HANAService = await cds.connect.to("API_BUSINESS_PARTNER");
+  const NORTHWINDService = await cds.connect.to("Northwind");
 
   srv.on("getNorthwindProducts", async (req) => {
     try {
@@ -104,6 +105,19 @@ module.exports = async (srv) => {
     // return businessPartners;
   });
 
+  srv.on("batchOperationsCAP", async (req) => {
+    return await NORTHWINDService.send({
+      method: "POST",
+      path: "$batch",
+      headers: {
+        "Accept": "multipart/mixed",
+        "Content-Type": "multipart/mixed;boundary=batch_abcd",
+      },
+      data: 
+      "--batch_abcd\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\n\r\nGET Products?$format=json HTTP/1.1\r\n\r\n--batch_abcd--"
+    });
+  });
+
   srv.on("batchOperationsBP", async (req) => {
     const { businessPartnerApi, businessPartnerAddressApi } =
       apiBusinessPartner();
@@ -139,8 +153,12 @@ module.exports = async (srv) => {
     });
     let create1 = businessPartnerAddressApi.requestBuilder().create(address1);
 
+    let createRequests = []
+
+    createRequests.push(create1)
+
     try {
-      let partners = await batch(changeset(create1), read1, read2)
+      let partners = await batch(changeset(...createRequests), read1, read2)
         .addCustomHeaders({
           apikey: process.env.apikey,
         })
@@ -192,9 +210,9 @@ module.exports = async (srv) => {
 
     try {
       await sendMail({ destinationName: "google_smtp" }, [mailConfig], {
-        greetingTimeout: 30000
+        greetingTimeout: 30000,
       });
-      console.log("After await...")
+      console.log("After await...");
     } catch (error) {
       console.log("ERROR: ", error);
       // Do whatever here...
@@ -202,6 +220,5 @@ module.exports = async (srv) => {
     }
 
     return "OK";
-    
   });
 };
