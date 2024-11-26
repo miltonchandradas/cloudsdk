@@ -3,4 +3,4 @@ GET http://localhost:4004/service/sdk/$metadata
 
 
 ### GET Northwind Products
-GET http://localhost:4004/service/sdk/getNorthwindProducts()
+GET http://localhost:4004/odata/v4/service/sdk/getNorthwindProducts()
