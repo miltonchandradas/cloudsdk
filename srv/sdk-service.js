@@ -14,7 +14,7 @@ module.exports = async (srv) => {
         }
       );
 
-      let data = response.data.d.results;
+      let data = response.data;
       return data;
     } catch (error) {
       console.log(error);

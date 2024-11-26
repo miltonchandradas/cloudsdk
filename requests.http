@@ -3,7 +3,7 @@ GET http://localhost:4004/service/sdk/$metadata
 
 
 ### GET Northwind Products
-GET http://localhost:4004/service/sdk/getNorthwindProducts()
+GET http://localhost:4004/odata/v4/service/sdk/getNorthwindProducts()
 
 
 ### POST Northwind Products
@@ -19,5 +19,5 @@ Content-Type: application/json;IEEE754Compatible=true
 }
 
 ### GET Business Partners
-GET http://localhost:4004/service/sdk/BusinessPartners
+GET http://localhost:4004/odata/v4/service/sdk/BusinessPartners
 
