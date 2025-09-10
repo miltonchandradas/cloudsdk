@@ -1,13 +1,13 @@
 ### GET metadata
-GET http://localhost:4004/service/sdk/$metadata
+GET http://localhost:4004/odata/v4/service/sdk/$metadata
 
 
 ### GET Northwind Products
-GET http://localhost:4004/service/sdk/getNorthwindProducts()
+GET http://localhost:4004/odata/v4/service/sdk/getNorthwindProducts()
 
 
 ### POST Northwind Products
-POST http://localhost:4004/service/sdk/addNorthwindProduct
+POST http://localhost:4004/odata/v4/service/sdk/addNorthwindProduct
 Content-Type: application/json;IEEE754Compatible=true
 
 {
@@ -19,9 +19,9 @@ Content-Type: application/json;IEEE754Compatible=true
 }
 
 ### GET Business Partners
-GET http://localhost:4004/service/sdk/BusinessPartners
+GET http://localhost:4004/odata/v4/service/sdk/BusinessPartners
 
 
 ### BATCH Operations (Read, Read, Create)
-GET http://localhost:4004/service/sdk/batchOperationsBP()
+GET http://localhost:4004/odata/v4/service/sdk/batchOperationsBP()
 

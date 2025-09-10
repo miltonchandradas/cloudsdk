@@ -6,20 +6,25 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
-    "@sap-cloud-sdk/http-client": "^3.6.0",
-    "@sap-cloud-sdk/openapi": "^3.6.0",
-    "@sap-cloud-sdk/openapi-generator": "^3.6.0",
-    "@sap/cds": "^6",
+    "@cap-js-community/odata-v2-adapter": "^1.15.2",
+    "@sap-cloud-sdk/http-client": "^4.0.2",
+    "@sap-cloud-sdk/openapi": "^4.0.2",
+    "@sap-cloud-sdk/openapi-generator": "^4.0.2",
+    "@sap/cds": "^9.1.0",
     "express": "^4"
   },
   "devDependencies": {
-    "@sap-cloud-sdk/generator": "^3.6.0",
+    "@sap-cloud-sdk/generator": "^4.0.2",
     "sqlite3": "^5"
   },
   "scripts": {
     "start": "cds-serve"
   },
   "cds": {
+    "cov2ap": {
+      "plugin": true,
+      "path": "v2"
+    },
     "requires": {
       "API_BUSINESS_PARTNER": {
         "kind": "odata-v2",
